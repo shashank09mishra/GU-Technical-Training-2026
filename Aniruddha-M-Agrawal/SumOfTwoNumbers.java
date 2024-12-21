@@ -5,13 +5,14 @@ class SumOfTwoNumbers {
    }
 
    public static void main(String[] args) {
+    
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter two numbers: ");
 
-      Scanner sc = new Scanner(System.in);
+    int number1 = sc.nextInt();
+    int number2 = sc.nextInt();
+    int sum = number1 + number2;
 
-      int var2 = sc.nextInt();
-      int var3 = sc.nextInt();
-      int var4 = var2 + var3;
-
-      System.out.println(var4);
+    System.out.println("Sum of given two numbers: " + sum);
    }
 }
