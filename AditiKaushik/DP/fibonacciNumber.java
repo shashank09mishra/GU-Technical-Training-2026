@@ -1,3 +1,6 @@
+package AditiKaushik.DP;
+import java.util.Scanner;
+
 class fibonacciNumber {
     public static int fib(int n) {
         if (n <= 1)
@@ -12,7 +15,9 @@ class fibonacciNumber {
     }
 
     public static void main(String[] args) {
-        int n = 10; // Change this value to test other cases
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter position of Fibonacci Number: ");
+        int n = sc.nextInt();
         System.out.println("Fibonacci number at position " + n + " is: " + fib(n));
     }
 }
