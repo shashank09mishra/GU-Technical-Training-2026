@@ -1,4 +1,4 @@
-package Pranav_Agrahari.Basics;
+
 
 import java.util.Scanner;
 
