@@ -1,7 +1,0 @@
-package Pranav_Agrahari.Basics;
-
-public class q2 {
-    public static void main(String[] args) {
-        
-    }
-}
