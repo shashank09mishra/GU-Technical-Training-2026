@@ -2,7 +2,7 @@ package AditiKaushik.BasicQuestions;
 
 import java.util.Scanner;
 
-public class convertDays {
+class convertDays {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the number of days: ");
