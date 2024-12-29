@@ -10,5 +10,6 @@ class sum{
         System.out.println("Enter second number: ");
         int secondNumber = sc.nextInt();
         System.out.println("Sum of given two numbers: " + (firstNumber + secondNumber));
+        sc.close();
     }
 }
