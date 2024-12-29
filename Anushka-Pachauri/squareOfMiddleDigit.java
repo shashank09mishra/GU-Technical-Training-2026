@@ -1,5 +1,5 @@
 import java.util.*;
-class squareOfMiddleDigit{
+class SquareOfMiddleDigit{
     static int square(int num){
         return ((num/10)%10)*((num/10)%10);
     }

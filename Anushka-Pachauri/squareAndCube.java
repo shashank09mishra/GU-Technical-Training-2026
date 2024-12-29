@@ -1,5 +1,5 @@
 import java.util.*;
-class squareAndCube{
+class SquareAndCube{
     static int square(int num){
         return num*num;
     }

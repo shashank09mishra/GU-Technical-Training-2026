@@ -1,5 +1,5 @@
 import java.util.*;
-class printDigits{
+class PrintDigits{
     static void digits(int num){
         if(num==0)
         return;

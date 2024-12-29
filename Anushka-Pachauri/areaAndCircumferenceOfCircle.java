@@ -1,5 +1,5 @@
 import java.util.*;
-class areaAndCircumferenceOfCircle{
+class AreaAndCircumferenceOfCircle{
     static double area(double radius){
         return 3.14*radius*radius;
     }

@@ -1,5 +1,5 @@
 import java.util.*;
-class sumOfFirstAndThird{
+class SumOfFirstAndThird{
     static int sum(int num){
         return (num%10)+(num/100);
     }

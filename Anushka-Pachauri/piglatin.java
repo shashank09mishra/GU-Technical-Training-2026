@@ -1,5 +1,5 @@
 import java.util.*;
-public class piglatin{
+public class Piglatin{
     static String toPiglatin(String str){
         String piglatinstr="";
         String[] words=str.split(" ");

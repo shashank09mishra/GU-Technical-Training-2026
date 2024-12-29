@@ -1,5 +1,5 @@
 import java.util.*;
-class rupeeToPaisa{
+class RupeeToPaisa{
     static int toPaisa(int rupee){
         return rupee*100;
     }
