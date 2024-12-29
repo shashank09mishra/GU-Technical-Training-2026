@@ -1,6 +1,5 @@
-//WAP to take input 1 number from the user and print its square and cube.//
 import java.util.Scanner;
-public class Main{
+public class SquareAndCube{
     public static int square(int a){
         int b = a * a;
         return b;
@@ -16,4 +15,4 @@ public class Main{
         System.out.println("The Square of the Number is:" + square(a));
         System.out.println("The Cube of the Number is:" + cube(a));
     }
-}  
+}     
