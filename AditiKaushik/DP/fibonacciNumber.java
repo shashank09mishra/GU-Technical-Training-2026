@@ -19,5 +19,6 @@ class fibonacciNumber {
         System.out.println("Enter position of Fibonacci Number: ");
         int n = sc.nextInt();
         System.out.println("Fibonacci number at position " + n + " is: " + fib(n));
+        sc.close();
     }
 }
