@@ -43,7 +43,11 @@ public class PrintSeries {
         System.out.println();
     }
     private static void printFourth(int n){
-
+        System.out.print("0");
+        for(int i=2; i<=n; i++){
+            System.out.print(", " + (i*i*i-1));
+        }
+        System.out.println();
     }
     private static void printFifth(int n){
         int a = 0;
