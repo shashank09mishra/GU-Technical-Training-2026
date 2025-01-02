@@ -1,4 +1,5 @@
-### DHEERAJ KUMAR
+<h1 align="center"> DHEERAJ KUMAR <h1>
+<h3 align="center">
 **Admission no** - `22SCSE1012360`
 
 **Section** - `35`
