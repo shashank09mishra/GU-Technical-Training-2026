@@ -2,57 +2,47 @@
 import java.util.*;
 
 public class Problem1 {
-    public static int calculateSum(int[] nums,int answer){
-        int[] leftSum=new int[nums.length];
-        int[] rightSum=new int[nums.length];
-        //int answer=0;
-        leftSum[0]=0;
-        rightSum[rightSum.length-1]=0;
-        //for rightSum 
-        for(int i=1;i<leftSum.length;i++){
-            leftSum[i]+=nums[i-1];
-
+    public static int calculateSum(int[] nums){
+        int[] prefixSum=new int[nums.length];
+        int[] suffixSum=new int[nums.length];
+        prefixSum[0]=nums[0];
+        suffixSum[nums.length-1]=nums[nums.length-1];
+        // for prefixsum
+        for(int i=1;i<nums.length;i++){
+            prefixSum[i]=nums[i]+prefixSum[i-1];
         }
-        //for leftSum
-        for(int j=rightSum.length-1;j>1;j--){
-            rightSum[j]+=nums[j+1];
+        // for suffixSum
+        for(int i=nums.length-2;i>=0;i--){
+            suffixSum[i]=nums[i]+suffixSum[i+1];
         }
-        for(int k=0;k<nums.length;k++){
-            if(leftSum[k]==rightSum[k]){
-                answer++;
-            }
-            else {
-                answer=-1;
+        for( int i=0;i<nums.length;i++){
+            if(prefixSum[i]==suffixSum[i]){
+                return i;
             }
         }
-        return answer;
-
-
+        return -1;
     }
     public static void main(String[] args){
 
         Scanner sc=new Scanner(System.in);
-        System.out.println("Enter weights in form of array: ");
-        int num1= sc.nextInt();
-        int num2=sc.nextInt();
-        int num3=sc.nextInt();
+        System.out.println("Enter size of array: ");
+        int n = sc.nextInt();
+
+        int[] nums=new int[n];
+        System.out.println("Enter numbers of array: ");
+        for(int i=0; i<n; i++){
+            
+            nums[i] = sc.nextInt();
+        }
         int answer=0;
-        int[] nums={num1,num2,num3};
+        
        // calculateSum(nums);
-       answer=calculateSum(nums, answer);
-       System.out.println(+answer);
-
-        
-        
-        
-        
-        
-
-
+       answer=calculateSum(nums);
+       System.out.println("Midle index is "+answer);
     }
-    ///time complesixity for leftSum=O(N)
-    /// time complexity for rightSum=O(N)
-    /// time complexity for answer=O(n)
-    /// total time compleexity=O(N)
-    //Space complexity =O(1)
 }
+// time complesixity for leftSum=O(N)
+// time complexity for rightSum=O(N)
+// time complexity for answer=O(n)
+// total time compleexity=O(N)
+// Space complexity =O(1)
