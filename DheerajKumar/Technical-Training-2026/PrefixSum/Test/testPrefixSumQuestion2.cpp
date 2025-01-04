@@ -1,4 +1,8 @@
-/*In the bustling town of Flytown, a new airline company has introduced a unique booking
+/*
+
+1109
+
+In the bustling town of Flytown, a new airline company has introduced a unique booking
 system to manage its flight reservations. The town's people, excited about the new
 service, start reserving seats for different flights. However, the airline faces a small
 challenge—they need to calculate the total number of seats reserved for each flight
@@ -54,16 +58,45 @@ bookings[i].length == 3
 
 using namespace std;
 
-class Solution{
-    public:
-        vector<int> avilableSeats(int , vector<vector<int>>& seats){
-            int totalSeats = 0, int noOfFlightes = seats.size();
-            for(int i = 0; i < noOfFlightes; i++){
-                totalSeats += seats[i][2];
-            }
+class Solution {
+public:
+    vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+        int size = bookings.size();
+        vector<int> prefixSum(n + 1, 0);
 
-            for(int i = 0; i < numberOfFlights; i++){
-
-            }
+        for(int i = 0; i < size; i++){
+            prefixSum[(bookings[i][0] - 1)] += bookings[i][2];
+            prefixSum[bookings[i][1]] -= bookings[i][2];
         }
+
+        for(int i = 1; i < n; i++){
+            if(i == n){
+                return prefixSum;
+            }
+            prefixSum[i] += prefixSum[i-1]; 
+        }
+        prefixSum.pop_back();
+        return prefixSum;
+    }
 };
+
+int main(){
+    Solution test1;
+    
+    vector<vector<int>> booking = {{1,2,10},{2,3,20},{2,5,25}}, booking2 = {{1,3,5},{2,2,10}};
+    vector<int> result = test1.corpFlightBookings(booking, 5);
+
+    cout<<"\n\t{ ";
+    for(auto x : result){
+        cout<<x<<", ";
+    }
+    cout<<"}";
+
+    result = test1.corpFlightBookings(booking2, 3);
+
+    cout<<"\n\t{ ";
+    for(auto x : result){
+        cout<<x<<", ";
+    }
+    cout<<"}";
+}
