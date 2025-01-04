@@ -24,9 +24,9 @@ class Problem1
     return -1;
    }
    public static void main(String[] args){
-    int[] arr1 = {2,3,-1,8,4};
-    int[] arr2 = {1,-1,4};
-    int[] arr3 = {2,5};
+    // int[] arr1 = {2,3,-1,8,4};
+    // int[] arr2 = {1,-1,4};
+    // int[] arr3 = {2,5};
     Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[n];
@@ -35,7 +35,7 @@ class Problem1
     }  // O(n)
     
     int middleIndex = findMiddleIndex(arr);
-    System.out.print("MiddleIndex is =" + middleIndex);
+    System.out.print("MiddleIndex is = " + middleIndex);
     //t.c = O(n);
     //s.c = O(1);
    }
