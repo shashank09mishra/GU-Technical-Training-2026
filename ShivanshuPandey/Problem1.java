@@ -33,7 +33,7 @@ class Problem1
         for(int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
     }  // O(n)
-    
+    sc.close();
     int middleIndex = findMiddleIndex(arr);
     System.out.print("MiddleIndex is = " + middleIndex);
     //t.c = O(n);
