@@ -1,9 +1,16 @@
 def reservedSeats(n, bookings):
     seats = [0] * n
-    for booking in bookings:
-        for i in range(booking[0], booking[1]+1):
-            seats[i-1] += booking[2]
+
+    for book in bookings:
+        seats[book[0] - 1] += book[2]
+        if book[1] < n:
+            seats[book[1]] -= book[2]
+
+    for i in range(1, n):
+        seats[i] += seats[i - 1]
+
     return seats
+                
 
 
 # n = 5
