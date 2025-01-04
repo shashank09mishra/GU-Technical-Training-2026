@@ -38,6 +38,7 @@ public class problem2 {
         
         int[] answer = obj.corpFlightBookings(bookings, n);
         System.out.println(Arrays.toString(answer));
+        sc.close();
     }
     
 }
