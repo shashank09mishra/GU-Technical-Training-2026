@@ -9,13 +9,14 @@ public class NumMatrix {
 
     public NumMatrix(int[][] matrix){
         // taking prefix sum of each row of matrix
+        this.matrix = matrix;
         for(int i=0; i<matrix.length; i++){
             for(int j=1; j<matrix[i].length; j++){
                 matrix[i][j] += matrix[i][j-1];
             }
         }
         // initializing the data member
-        this.matrix = matrix;
+        
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2){
@@ -63,13 +64,13 @@ public class NumMatrix {
         // instanciating class object
         NumMatrix numMatrix = new NumMatrix(matrix);
 
-        for(int i=0; i<inputArray.length; i++){
+        for(int i=1; i<inputArray.length; i++){
             System.out.print("Enter range for sum: ");
             int row1 = sc.nextInt();
             int row2 = sc.nextInt();
             int col1 = sc.nextInt();
             int col2 = sc.nextInt();
-            ans[i] = numMatrix.sumRegion(row1, col1, row2, col2);
+            ans[i-1] = numMatrix.sumRegion(row1, col1, row2, col2);
         }
         sc.close();
 
