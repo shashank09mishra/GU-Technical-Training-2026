@@ -25,15 +25,14 @@ public class problem1 {
         //Space Complixity = O(1)
         for(int i = 0; i<n ;i++){
             if(prefixSum[i] == suffixSum[i]){
-                midIndex += i;
-            }else{
-                return -1;
+                return i;
             }
+            midIndex += i;
             
         }
         //Time Complixity = O(N)
         //Space Complixity = O(1)
-        return midIndex;
+        return -1;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
