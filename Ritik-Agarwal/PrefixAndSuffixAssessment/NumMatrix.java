@@ -5,32 +5,36 @@
 import java.util.Scanner;
 public class NumMatrix {
     
-    public int[][] matrix;
+    int[][] matrix;
 
-    public NumMatrix(int[][] matrix){
-        // taking prefix sum of each row of matrix
-        this.matrix = matrix;
-        for(int i=0; i<matrix.length; i++){
-            for(int j=1; j<matrix[i].length; j++){
-                matrix[i][j] += matrix[i][j-1];
+    public NumMatrix(int[][] matrix) {
+        for (int i = 1; i < matrix[0].length; i++) {
+            matrix[0][i] += matrix[0][i - 1];
+        }
+        for (int i = 1; i < matrix.length; i++) {
+            matrix[i][0] += matrix[i - 1][0];
+        }
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[i].length; j++) {
+                matrix[i][j] += matrix[i][j - 1] + matrix[i - 1][j] - matrix[i - 1][j - 1];
             }
         }
-        // initializing the data member
-        
+        this.matrix = matrix;
     }
 
-    public int sumRegion(int row1, int col1, int row2, int col2){
+    public int sumRegion(int row1, int col1, int row2, int col2) {
         int sum = 0;
-
-        for(int i=row1; i<row2; i++){
-            int excludingValue = 0;
-            if(col1!=0){
-                excludingValue = matrix[i][col1-1];
-            }
-            sum+=(matrix[i][col2]-excludingValue);
+        int upper = 0, lower = 0, diagonal = 0;
+        if (row1 > 0) {
+            upper = matrix[row1 - 1][col2];
         }
-
-        return sum;
+        if (col1 > 0) {
+            lower = matrix[row2][col1 - 1];
+        }
+        if (row1 > 0 && col1 > 0) {
+            diagonal = matrix[row1 - 1][col1 - 1];
+        }
+        return matrix[row2][col2] - upper - lower + diagonal;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -35,12 +35,14 @@ public class Problem2 {
     private static int[] findReservedSeatsForEachFlight(int numOfFlights, int[][] bookings){ //time compexity -> O(m*n) and SC -> O(n)
         int ans[] = new int[numOfFlights];
         for(int i=0; i<bookings.length; i++){
-            int startFlightIdx = bookings[i][0];
-            int lastFlightIdx = bookings[i][1];
             int reserveSeats = bookings[i][2];
-            for(int j=startFlightIdx; j<=lastFlightIdx; j++){
-                ans[j-1] += reserveSeats;
+            ans[bookings[i][0]-1] += reserveSeats;
+            if(numOfFlights!=bookings[i][1]){
+                ans[bookings[i][1]] += (-1)*reserveSeats;
             }
+        }
+        for(int i=1; i<ans.length; i++){
+            ans[i]+=ans[i-1];
         }
         return ans;
     }
