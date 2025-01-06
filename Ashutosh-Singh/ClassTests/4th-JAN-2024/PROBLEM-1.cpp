@@ -2,23 +2,28 @@
 #include <vector>
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    int pivotIndex(vector<int>& nums) {
+    int pivotIndex(vector<int> &nums)
+    {
         int n = nums.size();
         int TotalSum = 0;
-        for(int i = 0;i<n;i++){
+        for (int i = 0; i < n; i++)
+        {
             TotalSum += nums[i];
         }
 
         int leftSum = 0;
         int rightSum = 0;
         int sum = 0;
-        for(int i = 0;i<n;i++){
+        for (int i = 0; i < n; i++)
+        {
             sum += nums[i];
             leftSum = sum - nums[i];
             rightSum = TotalSum - sum;
-            if(leftSum == rightSum){
+            if (leftSum == rightSum)
+            {
                 return i;
             }
         }
@@ -26,7 +31,8 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     // Example Inputs
     vector<int> nums1 = {2, 3, -1, 8, 4}; // Expected Output: 3
     vector<int> nums2 = {1, -1, 4};       // Expected Output: 2

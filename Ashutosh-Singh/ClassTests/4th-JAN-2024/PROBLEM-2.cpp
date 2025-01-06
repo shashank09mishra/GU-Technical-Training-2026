@@ -3,25 +3,30 @@
 
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+    vector<int> corpFlightBookings(vector<vector<int>> &bookings, int n)
+    {
         vector<int> diff(n + 1, 0);
 
-        for (const auto& booking : bookings) {
-            int first = booking[0];  
-            int last = booking[1];   
+        for (const auto &booking : bookings)
+        {
+            int first = booking[0];
+            int last = booking[1];
             int seats = booking[2];
 
-            diff[first - 1] += seats;    
-            if (last < n) {
-                diff[last] -= seats;   
+            diff[first - 1] += seats;
+            if (last < n)
+            {
+                diff[last] -= seats;
             }
         }
 
         vector<int> result(n, 0);
         int runningSum = 0;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             runningSum += diff[i];
             result[i] = runningSum;
         }
@@ -30,24 +35,31 @@ public:
     }
 };
 
-int main() {
-    // Sample input
-    vector<vector<int>> bookings = {
-        {1, 2, 10},
-        {2, 3, 20},
-        {2, 5, 25}
-    };
-    int n = 5;
+int main()
+{
+    int n, m;
 
-    // Create an instance of the Solution class
+    cout << "Enter the number of flights (n): ";
+    cin >> n;
+
+    cout << "Enter the number of bookings: ";
+    cin >> m;
+
+    vector<vector<int>> bookings(m, vector<int>(3));
+
+    cout << "Enter booking details (start, end, seats) for each booking:\n";
+    for (int i = 0; i < m; ++i)
+    {
+        cin >> bookings[i][0] >> bookings[i][1] >> bookings[i][2];
+    }
+
     Solution solution;
 
-    // Call the function
     vector<int> result = solution.corpFlightBookings(bookings, n);
 
-    // Print the result
     cout << "Result: ";
-    for (int seats : result) {
+    for (int seats : result)
+    {
         cout << seats << " ";
     }
     cout << endl;
