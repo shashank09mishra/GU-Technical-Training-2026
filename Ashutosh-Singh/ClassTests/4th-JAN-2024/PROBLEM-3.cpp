@@ -18,16 +18,29 @@ public:
 };
 
 int main() {
-    // Example input array
-    vector<int> nums = {1, 2, 3, 4, 5};
+    int n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+
+    vector<int> nums(n);
+    cout << "Enter the elements of the array:\n";
+    for (int i = 0; i < n; ++i) {
+        cin >> nums[i];
+    }
 
     // Create NumArray object
     NumArray numArray(nums);
 
-    // Example queries
-    cout << "Sum of range [0, 2]: " << numArray.sumRange(0, 2) << endl; // Output: 6 (1 + 2 + 3)
-    cout << "Sum of range [1, 4]: " << numArray.sumRange(1, 4) << endl; // Output: 14 (2 + 3 + 4 + 5)
-    cout << "Sum of range [2, 2]: " << numArray.sumRange(2, 2) << endl; // Output: 3 (3)
+    int q;
+    cout << "Enter the number of queries: ";
+    cin >> q;
+
+    cout << "Enter the queries in the format [left, right]:\n";
+    for (int i = 0; i < q; ++i) {
+        int left, right;
+        cin >> left >> right;
+        cout << "Sum of range [" << left << ", " << right << "]: " << numArray.sumRange(left, right) << endl;
+    }
 
     return 0;
 }
