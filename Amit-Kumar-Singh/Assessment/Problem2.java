@@ -1,4 +1,4 @@
-//Time Complexity: O(n^2) && Space Complexity: O(n)
+//Time Complexity: O(n+m) && Space Complexity: O(n+m)
 import java.util.*;
 
 public class Problem2 {
