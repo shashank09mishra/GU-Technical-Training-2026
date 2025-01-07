@@ -2,23 +2,28 @@
 #include <vector>
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    int pivotIndex(vector<int>& nums) {
+    int pivotIndex(vector<int> &nums)
+    {
         int n = nums.size();
         int TotalSum = 0;
-        for(int i = 0;i<n;i++){
+        for (int i = 0; i < n; i++)
+        {
             TotalSum += nums[i];
         }
 
         int leftSum = 0;
         int rightSum = 0;
         int sum = 0;
-        for(int i = 0;i<n;i++){
+        for (int i = 0; i < n; i++)
+        {
             sum += nums[i];
             leftSum = sum - nums[i];
             rightSum = TotalSum - sum;
-            if(leftSum == rightSum){
+            if (leftSum == rightSum)
+            {
                 return i;
             }
         }
@@ -27,22 +32,25 @@ public:
 };
 
 int main() {
-    // Example Inputs
-    vector<int> nums1 = {2, 3, -1, 8, 4}; // Expected Output: 3
-    vector<int> nums2 = {1, -1, 4};       // Expected Output: 2
-    vector<int> nums3 = {2, 5};           // Expected Output: -1
+    int n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
 
-    // Create an object of the Solution class
+    vector<int> nums(n);
+    cout << "Enter the elements of the array:\n";
+    for (int i = 0; i < n; ++i) {
+        cin >> nums[i];
+    }
+
+    
     Solution solution;
+    int pivot = solution.pivotIndex(nums);
 
-    // Test Case 1
-    cout << "Pivot Index for nums1: " << solution.pivotIndex(nums1) << endl;
-
-    // Test Case 2
-    cout << "Pivot Index for nums2: " << solution.pivotIndex(nums2) << endl;
-
-    // Test Case 3
-    cout << "Pivot Index for nums3: " << solution.pivotIndex(nums3) << endl;
+    if (pivot != -1) {
+        cout << "Pivot Index: " << pivot << endl;
+    } else {
+        cout << "No Pivot Index found." << endl;
+    }
 
     return 0;
 }
