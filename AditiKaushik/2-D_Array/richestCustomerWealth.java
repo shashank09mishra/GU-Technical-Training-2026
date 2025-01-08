@@ -1,4 +1,5 @@
 // 1672. Richest Customer Wealth
+
 import java.util.Scanner;
 
 class richestCustomerWealth {
@@ -30,3 +31,6 @@ class richestCustomerWealth {
         sc.close();
     }
 }
+
+//Time Complexity: O(m*n)
+//Space Complexity: O(1)
