@@ -1,5 +1,3 @@
-package NirbhayTyagi.PrefixSum;
-
 import java.util.Scanner;
 public class maximumScoreAfterSplittingaString{
     public int maxScore(String s) {
