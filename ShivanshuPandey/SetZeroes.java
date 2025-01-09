@@ -1,5 +1,3 @@
-package lab_Questions;
-
 public class SetZeroes {
     public void setZeroes(int[][] matrix) {
         boolean firstRow = false;
