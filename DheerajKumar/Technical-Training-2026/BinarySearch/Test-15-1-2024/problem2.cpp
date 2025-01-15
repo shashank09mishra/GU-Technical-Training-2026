@@ -1,3 +1,9 @@
+/*
+875
+ */
+
+
+
 #include<iostream>
 #include<vector>
 #include<limits.h>
@@ -6,47 +12,26 @@
 using namespace std;
 
 class Solution {
-    bool validCapacity(vector<int>& pile, int hours, int capacityToEat){
-        int Ittrator = 0, remaningBananas = 0;
-        
-        while(hours > 0){
-            if(Ittrator < pile.size()){
-                if(pile[Ittrator] <= capacityToEat){
-                    hours --;
-                    Ittrator ++;
-                }
-                else{
-                    remaningBananas += pile[Ittrator] - capacityToEat;
-                    hours --;
-                    Ittrator ++;
-                }
-            }
-            else{  
-                if(remaningBananas <= capacityToEat){
-                    remaningBananas = 0;
-                    break;
-                }else{
-                    remaningBananas -= capacityToEat;
-                    hours--;
-                }
-            }
-        }
+bool validCapacity(vector<int>& pile, int hours, int capacityToEat) {
+    int totalHours = 0;
 
-        if(remaningBananas == 0){
-            return true;
-        }
-        else{
+    for (int bananas : pile) {
+        totalHours += (bananas + capacityToEat - 1) / capacityToEat;
 
+        if (totalHours > hours) {
             return false;
         }
     }
+
+    return true;
+}
 public:
-    int capacityToEat(vector<int>& pile, int hours){
+    int minEatingSpeed(vector<int>& pile, int hours){
         if(pile.size() > hours){
             return -1;
         }
         
-        int minimumCapacity = INT_MAX, maximumCapacity = INT_MIN, actualCapacity = 0;
+        int minimumCapacity = 1, maximumCapacity = *max_element(pile.begin(), pile.end()), actualCapacity = 0;
 
         for(int i = 0; i < pile.size(); i++){
             minimumCapacity = min(minimumCapacity, pile[i]);
@@ -74,6 +59,9 @@ public:
 
 
 
+
+
+
 int main(){
     Solution test;
 
@@ -91,7 +79,7 @@ int main(){
     cout<<"\n\tEnter hours -> ";
     cin>>hours;
 
-    result = test.capacityToEat(array, hours);
+    result = test.minEatingSpeed(array, hours);
 
     if(result == -1){
         cout<<"\n\tNot Possible!";
