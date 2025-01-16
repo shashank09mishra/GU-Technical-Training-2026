@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
 class Solution {
@@ -43,34 +42,22 @@ public:
 
     int searchdiff(vector<int>& nums, int target) {
         int n = nums.size();
-        int ans = 0;
         int first = firstOccurence(nums, n, target);
+        if (first == -1) {
+            return 0; // Target not found
+        }
         int second = lastOccurence(nums, n, target);
         return second - first + 1;
-        
     }
 };
 
 int main() {
-    int n, target;
-
-    cout << "Enter the number of elements in the array: ";
-    cin >> n;
-
-    vector<int> nums(n);
-    cout << "Enter the elements of the array: ";
-    for (int i = 0; i < n; i++) {
-        cin >> nums[i];
-    }
-
-
-    cout << "Enter the target value: ";
-    cin >> target;
-
     Solution solution;
-    int result = solution.searchdiff(nums, target);
+    vector<int> nums = {1, 2, 2, 2, 3, 4, 5};
+    int target = 2;
 
-    cout << "The number of occurrences of the target value in the array is: " << result << endl;
+    int result = solution.searchdiff(nums, target);
+    cout << "The number of occurrences of " << target << " is: " << result << endl;
 
     return 0;
 }
