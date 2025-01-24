@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class Firstproblem{
     public static int checkBalance(int [] arr){ // Time Compexity of checkBalance method is O(2N) 
@@ -40,7 +39,5 @@ public class Firstproblem{
         System.out.println(checkBalance(arr));
 
         sc.close();
-    }
-
-    
+    }  
 }
