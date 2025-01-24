@@ -17,13 +17,8 @@ public class SecondProblem {
                 right+=3;
                 left+=3;
             }
-            
-            
         }
-
         return answer;
-        
-
     }
     public static void main(String[] args) {// overall Time complexity: O(2N^2)
         Scanner sc = new Scanner(System.in);// overall space complexity: O(2N)
