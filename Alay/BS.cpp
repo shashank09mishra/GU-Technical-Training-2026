@@ -526,4 +526,318 @@ public:
     }
 };
 
-//
+//162
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int left = 0, right = nums.size() - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > nums[mid + 1]) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+};
+
+//34
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> result(2, -1);
+
+        if (nums.empty()) {
+            return result;
+        }
+        result[0] = findBound(nums, target, true);
+        if (result[0] == -1) {
+            return result;
+        }
+        result[1] = findBound(nums, target, false);
+
+        return result;
+    }
+
+private:
+    int findBound(const vector<int>& nums, int target, bool isFirst) {
+        int start = 0, end = nums.size() - 1, bound = -1;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] == target) {
+                bound = mid;
+                if (isFirst) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+        return bound;
+    }
+};
+
+//33
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int left = 0, right = nums.size();
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[mid] > target){
+                left = mid + 1;
+            }
+            else{
+                right = mid - 1;               
+            }
+        }
+        return -1;
+    }
+};
+
+//275
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        sort(citations.rbegin(), citations.rend());
+        int h = 0;
+        for (int i = 0; i < citations.size(); ++i) {
+            if (citations[i] >= i + 1) { 
+                h = i + 1;
+            } else {
+                break;
+            }
+        }
+        return h;
+    }
+};
+
+//633
+class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        long long i = 0, j;
+        while (i * i <= c) {
+            j = sqrt(c - i * i);
+            if (j * j == c - i * i) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+};
+
+//2226
+class Solution {
+public:
+    int maximumCandies(vector<int>& candies, long long k) {
+        long long l = 1, r = *max_element(candies.begin(), candies.end()); 
+        int result = 0;
+
+        while (l <= r) {
+            long long m = l + (r - l) / 2;
+            long long total = 0;
+
+            for (int i = 0; i < candies.size(); i++) {
+                total += candies[i] / m;
+            }
+
+            if (total >= k) {
+                result = m; 
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+
+        return result;
+    }
+};
+
+//875
+class Solution {
+public:
+    bool canEatAllBananas(const vector<int>& piles, int k, int h) {
+        int hours = 0;
+        for (int pile : piles) { // using for loop O(n)
+            hours += (pile + k - 1) / k;
+        }
+        return hours <= h;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int left = 1, right = *max_element(piles.begin(), piles.end());
+        while (left < right) { // using binary search O(logn)
+            int mid = left + (right - left) / 2;
+            if (canEatAllBananas(piles, mid, h)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+};
+
+//2594
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    bool canRepairAllCars(const vector<int>& ranks, int cars, long long time) {
+        long long totalCars = 0;
+        for (int rank : ranks) {
+            totalCars += (long long)sqrt(time / (long long)rank);
+            if (totalCars >= cars) return true;
+        }
+        return totalCars >= cars;
+    }
+    long long repairCars(vector<int>& ranks, int cars) {
+        long long left = 1;
+        long long right = (long long)*min_element(ranks.begin(), ranks.end()) * (long long)cars * (long long)cars;
+
+        while (left < right) {
+            long long mid = left + (right - left) / 2;
+            if (canRepairAllCars(ranks, cars, mid)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left;
+    }
+};
+
+//2055
+class Solution {
+public:
+    vector<int> platesBetweenCandles(string s, vector<vector<int>>& queries) {
+        int n = s.size();
+        vector<int> leftCandle(n, -1);
+        vector<int> rightCandle(n, n);
+        vector<int> prefixSum(n + 1, 0);
+        int lastCandle = -1;
+        for (int i = 0; i < n; ++i) {
+            if (s[i] == '|') {
+                lastCandle = i;
+            }
+            leftCandle[i] = lastCandle;
+        }
+        lastCandle = n;
+        for (int i = n - 1; i >= 0; --i) {
+            if (s[i] == '|') {
+                lastCandle = i;
+            }
+            rightCandle[i] = lastCandle;
+        }
+        for (int i = 0; i < n; ++i) {
+            prefixSum[i + 1] = prefixSum[i] + (s[i] == '*' ? 1 : 0);
+        }
+        vector<int> result(queries.size(), 0);
+        for (int i = 0; i < queries.size(); ++i) {
+            int left = queries[i][0];
+            int right = queries[i][1];
+            int nearestRightCandle = rightCandle[left];
+            int nearestLeftCandle = leftCandle[right];
+            if (nearestRightCandle <= nearestLeftCandle) {
+                result[i] = prefixSum[nearestLeftCandle + 1] - prefixSum[nearestRightCandle];
+            }
+        }
+
+        return result;
+    }
+};
+
+//2616
+class Solution {
+public:
+    bool canFormPairs(vector<int>& nums, int maxDiff, int p) {
+        int count = 0;
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i] - nums[i - 1] <= maxDiff) {
+                count++;
+                i++;
+            }
+            if (count >= p) return true;
+        }
+        return count >= p;
+    }
+
+    int minimizeMax(vector<int>& nums, int p) {
+        sort(nums.begin(), nums.end());
+        int left = 0, right = nums.back() - nums.front();
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (canFormPairs(nums, mid, p)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+};
+
+//2141
+class Solution {
+public:
+    long long maxRunTime(int n, vector<int>& batteries) {
+        long long totalSum = 0;
+        for (int battery : batteries) {
+            totalSum += battery;
+        }
+        if(n == 1){
+            return totalSum;
+        }
+
+        long long left = *min_element(batteries.begin(), batteries.end()), right = totalSum;
+        long long result = 0;
+
+        while (left <= right) {
+            long long mid = left + (right - left) / 2;
+
+            if (isPossible(n, batteries, mid)) {
+                result = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return result;
+    }
+
+private:
+    bool isPossible(int n, const vector<int>& batteries, long long time) {
+        long long powerAvailable = 0;
+
+        for (long long battery : batteries) {
+            powerAvailable += min(battery, time); 
+        }
+
+        return powerAvailable >= n * time; 
+    }
+};
+
+//154
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        return *min_element(nums.begin(), nums.end());
+    }
+}
