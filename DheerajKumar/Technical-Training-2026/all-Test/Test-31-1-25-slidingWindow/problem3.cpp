@@ -5,25 +5,25 @@
 
 using namespace std;
 
-class Solution{
+class Solution {
     bool isValidSum(vector<int>& numbers, int divisionCount, int minimumSum){
         int sum = 0;
         for(int i = 0; i < numbers.size(); i++){
             sum += numbers[i];
             
-            if(sum > minimumSum && divisionCount <= 0){
-                return false;
-            }
-            else{
+            if(sum > minimumSum){
                 divisionCount--;
                 sum = numbers[i];
+                if(divisionCount <= 0){
+                    return false;
+                }
             }
         }
         return true;
     }
 
     public:
-        int minimumSum(vector<int>& numbers, int divisionCount){
+        int splitArray(vector<int>& numbers, int divisionCount){
             if(numbers.size() <= 1){
                 return numbers[0];
             }
@@ -32,9 +32,8 @@ class Solution{
             
             for(int i = 0; i < numbers.size(); i++){
                 end += numbers[i];
+                start = max(start, numbers[i]); 
             }
-            cout<<"max sum possible -> "<<end;
-            //calculating maximum sum ->
 
             while(start <= end){
                 minimumPossibleSum = (end + start)/2;
@@ -46,7 +45,7 @@ class Solution{
                     start = minimumPossibleSum + 1;
                 }
             }
-            return start;
+            return start ;
         }
 };
 
@@ -66,7 +65,7 @@ int main(){
         cin>>numebrInput[i];
     }
 
-    cout<<"\n\tthe maximum minimized sum -> "<<test.minimumSum(numebrInput, inputAndRange[1] - 1);
+    cout<<"\n\tthe maximum minimized sum -> "<<test.splitArray(numebrInput, inputAndRange[1] - 1);
 }
 
 
