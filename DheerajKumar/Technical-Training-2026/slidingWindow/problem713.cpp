@@ -60,4 +60,6 @@ int main(){
     testInput = {10,5,2,6}; thrusHold = 100;
     cout<<"\n\t The number of subsets ->> "<<Test.numSubarrayProductLessThanK(testInput, thrusHold);
 
+    testInput = {1}; thrusHold = 2;
+    cout<<"\n\t The number of subsets ->> "<<Test.numSubarrayProductLessThanK(testInput, thrusHold);
 }
