@@ -42,3 +42,6 @@ class Solution {
             return totalCount;
         }
     };
+
+    //Time Complaxity O(n log(n) )! TLE!
+    
