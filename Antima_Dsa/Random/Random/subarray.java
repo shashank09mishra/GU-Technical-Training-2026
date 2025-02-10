@@ -6,9 +6,8 @@ public class BinarySubarraySum {
         HashMap<Integer, Integer> prefixSumCount = new HashMap<>();
         prefixSumCount.put(0, 1); // Initialize with prefix sum 0 having frequency 1
 
-        int prefixSum = 0; // Current prefix sum
-        int result = 0;    // Number of subarrays with sum equal to goal
-
+        int prefixSum = 0; 
+        int result = 0;    
         for (int num : nums) {
             prefixSum += num; // Update prefix sum
 
@@ -17,7 +16,6 @@ public class BinarySubarraySum {
                 result += prefixSumCount.get(prefixSum - goal);
             }
 
-            // Update the frequency of the current prefix sum in the HashMap
             prefixSumCount.put(prefixSum, prefixSumCount.getOrDefault(prefixSum, 0) + 1);
         }
 
