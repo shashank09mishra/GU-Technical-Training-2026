@@ -19,4 +19,4 @@
 
 [LeetCode](https://leetcode.com/u/WHITE_TITAN/)
 
-
+[⭐Resume⭐](https://drive.google.com/file/d/11OozeiCCvbNvysttrasuDjKKIB0Lvpuu/view?usp=sharing)
