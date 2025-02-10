@@ -17,16 +17,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
         for (int end = 0; end < s.length(); end++) {
             char currentChar = s.charAt(end);
 
-            // If the character is already in the map and its index is >= start,
-            // move the start to the right of the previous occurrence
             if (charIndexMap.containsKey(currentChar) && charIndexMap.get(currentChar) >= start) {
                 start = charIndexMap.get(currentChar) + 1;
             }
 
-            // Update the last index of the character
             charIndexMap.put(currentChar, end);
 
-            // Update the maximum length if the current substring is longer
             maxLength = Math.max(maxLength, end - start + 1);
         }
 
@@ -36,12 +32,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         // Test cases
         String[] testCases = {
-            "abcabcbb", // Expected: 3 ("abc")
-            "bbbbb",    // Expected: 1 ("b")
-            "pwwkew",   // Expected: 3 ("wke")
-            "",         // Expected: 0 (empty string)
-            " ",        // Expected: 1 (" ")
-            "abba"      // Expected: 2 ("ab" or "ba")
+            "abcabcbb", 
+            "bbbbb",   
+            "pwwkew",   
+            "",         
+            " ",        
+            "abba"     
         };
 
         for (String s : testCases) {
