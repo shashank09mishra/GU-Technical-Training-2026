@@ -55,7 +55,7 @@ public:
             return 0;
         }
 
-        long long start = 1, end = totalCandies, maxCandies = 0,
+        long long start = 1, end = totalCandies / k, maxCandies = 0,
             validCandies = 0;
 
         while(start <= end){
@@ -72,3 +72,12 @@ public:
         return validCandies;
     }
 };
+
+
+int main(){
+    Solution test;
+    vector<int> Input = {5,8,6};
+    int childrens = 3;
+
+    cout<<"The maximum number of candies each child can have is ->"<<test.maximumCandies(Input, childrens);
+}
