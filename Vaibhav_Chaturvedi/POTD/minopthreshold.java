@@ -1,3 +1,5 @@
+package POTD;
+
 import java.util.*;
 //
 class minopthreshold{
