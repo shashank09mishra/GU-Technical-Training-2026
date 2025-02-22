@@ -1,4 +1,3 @@
-package LovelyKumari.Backtracking;
 import java.util.*;
 
 public class BacktrackingOnArrays {
