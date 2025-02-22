@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 class orderlyQueue{
-    public static String orderlyQueue(String s, int k) {
+    public static String orderly_Queue(String s, int k) {
         if (k > 1) {
             char[] characterArray = s.toCharArray();
             Arrays.sort(characterArray);
@@ -25,7 +25,7 @@ class orderlyQueue{
         String s = sc.nextLine();
         System.out.println("Enter the value of k: ");
         int k = sc.nextInt();
-        System.out.println(orderlyQueue(s, k));
+        System.out.println(orderly_Queue(s, k));
         sc.close();
     }
 }
