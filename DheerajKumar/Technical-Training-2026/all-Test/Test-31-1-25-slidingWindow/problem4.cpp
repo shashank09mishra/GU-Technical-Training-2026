@@ -5,27 +5,33 @@
 
 using namespace std;
 
-class Solution{
-    public:
-        int longestSemiRepetitive(string& number){
-            int count = 0, start = 0, end = 1, maximumLenght = INT_MIN;
+class Solution {
+public:
+    int longestSemiRepetitiveSubstring(string s) {
+        if(s.size() <= 1){
+            return 1;
+        }
 
-            while(end < number.size()){
-                if(number[end] == number[end - 1]){
-                    count++;
-                }
+        int start = 0, end = 1, count = 0, maxSize = 0, firstNonValid = 0;
 
-                if(count > 1){
-                    maximumLenght = max(maximumLenght, (end - start));
-                    count = 0;
-                    start = end;
-                }
-                end++;
+        while(end < s.size()){
+            if(s[end] == s[end - 1]){
+                count++;
             }
 
-            return maximumLenght;
+            while (count > 1) {
+                if (s[start] == s[start + 1]) {
+                    count--;
+                }
+                start++;
+            }
+            maxSize = max(maxSize, end - start + 1);
+            end++;
         }
+        return maxSize;
+    }
 };
+
 
 int main(){
     Solution test;
@@ -34,10 +40,10 @@ int main(){
     cout<<"Enter the string ->> ";
     getline(cin, s);
 
-    cout<<"maximum length -> "<<test.longestSemiRepetitive(s);
+    cout<<"maximum length -> "<<test.longestSemiRepetitiveSubstring(s);
 }
 
-
+//4411798
 /* complaxity -> O(n)
     space complaxity -> O(1)
     
