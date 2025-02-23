@@ -44,11 +44,6 @@ Sorting Algorithm Visualizer is a **Flutter-based mobile application** that prov
 ## Roadmap 🔮
 - [ ] Custom Array Input Feature
 
-## Contributing 🤝
-Contributions are welcome! Feel free to open issues and submit pull requests.
-
-## License 📜
-This project is licensed under the **MIT License**.
 
 ## Contact 📧
 For any questions or suggestions, reach out at kadi93030@gmail or visit https://github.com/adityaKumar0909.
