@@ -59,11 +59,6 @@ class SetMatrixZeroes{
                 matrix[i][j]=sc.nextInt();
             }
         }
-        // for(int i=0;i<row;i++){
-        //     for(int j=0;j<col;j++){
-        //         System.out.println(matrix[i][j]+ " ");
-        //     }
-        // }
         setZeroes(matrix);
         for(int i=0;i<row;i++){
             for(int j=0;j<col;j++){
