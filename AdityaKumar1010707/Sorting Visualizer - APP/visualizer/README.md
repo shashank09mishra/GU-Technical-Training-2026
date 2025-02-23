@@ -42,7 +42,6 @@ Sorting Algorithm Visualizer is a **Flutter-based mobile application** that prov
 4. Use **Pause/Resume** and **Reset** as required.
 
 ## Roadmap 🔮
-- [ ] Dark & Light Mode Support
 - [ ] Custom Array Input Feature
 
 ## Contributing 🤝
