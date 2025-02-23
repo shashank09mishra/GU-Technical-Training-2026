@@ -7,7 +7,6 @@ Sorting Algorithm Visualizer is a **Flutter-based mobile application** that prov
 - **Custom Animation Speeds:** Choose between Slow, Normal, and Fast modes.
 - **Pause & Resume:** Pause the sorting process and resume at any time.
 - **Reset Functionality:** Restart the sorting with the same dataset.
-- **Time Tracking:** Displays elapsed time for sorting operations.
 - **Interactive UI:** Modern and intuitive user interface.
 
 ## Technologies Used 🛠️
